@@ -8,6 +8,7 @@ export class Player extends Entity{
         this.isHuman = true;
         this.socket = socket;
         this.scene = undefined;
+        this.isLoggedIn = false;
     }
 
     emit(event, data){

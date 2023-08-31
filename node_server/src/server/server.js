@@ -4,13 +4,29 @@ import http from 'http';
 import { Game } from '../game/Game.js';
 import config from '../game/config.json' assert { type: 'json' };;
 
+const started = new Date();
+
 export class GameServer {
     io = undefined;
     allConnections = [];
     game = new Game();
     constructor(port){
         const app = express();
-        app.use(express.static('static'));
+        
+        app.get("/", (req, res) => {
+            res.send(`
+                <html>
+                    <head>
+                        <title>Arena Builders Online</title>
+                    </head>
+                    <body>
+                        <b>Arena Builders Online, Socket server</b>
+                        <p>There are currently ${this.allConnections.length} active connections</p>
+                        <p>Server has been active since ${started.toISOString()}</p>
+                    </body>
+                </html>
+            `);
+        })
         const server = http.createServer(app);
         this.io = new Server(server);
         server.listen(port, () => {

@@ -1,5 +1,6 @@
 import { Player } from "./entity/Player.js";
 import { Scene } from "./scene/Scene.js";
+import Database from '../database/database.js';
 
 export class Game {
     scenes = [];
@@ -15,7 +16,7 @@ export class Game {
     }
 
     addPlayer(socket){
-        const p = new Player("Test player", 100, 100, socket);
+        const p = new Player("Unknown Player", 100, 100, socket);
         this.addBindings(p);
         p.scene = this.defaultScene;
         this.defaultScene.players.push(p);
@@ -55,6 +56,25 @@ export class Game {
 
     addBindings(player){
         const socket = player.socket;
-        //Add bindings here if needed
+
+        socket.on('login', ({username, password}) => {
+            if(player.isLoggedIn){
+                socket.emit('login-result', {
+                    success : false,
+                    reason: "Already Logged In"
+                });
+            } else {
+                Database.Login(username, password).then(({success, character, reason}) => {
+                    if(!success){
+                        socket.emit('login-result', { success, reason});
+                    } else {
+                        player.isLoggedIn = true;
+                        player.character = character;
+                        socket.emit({success, character});
+                    }
+                })
+            }
+        });
+        //Add on-connection bindings here
     }
 }
