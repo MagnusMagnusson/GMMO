@@ -24,9 +24,13 @@ There are literally no files yet added, so that's literally all there is to it. 
 Make sure to have python installed. Then:
 
 1 ) Activate the python enviroment contained in python_database\pyenv.
+
 2 ) Using pip, install all the packages from requirements.txt
+
 3 ) Run "Python manage.py migrate" to create and update the database schema
+
 4 ) If you are running a fresh database, run "python manage.py createsuperuser", and create your admin role
+
 5 ) run "python manage runserver 0.0.0.0:5000" to start a development server running from port 5000
 
 From there you can head to localhost:5000/admin for the admin panel, and the node server can connect to the database. 
@@ -34,7 +38,9 @@ From there you can head to localhost:5000/admin for the admin panel, and the nod
 ## Node server.
 
 1 ) go into /node_server/
+
 2 ) run "npm install" to install all the packages needed
+
 3 ) run "npm run start" to run the development server. 
 
 From there the GML client should be able to connect to your socket server on port 8080.
@@ -42,5 +48,7 @@ From there the GML client should be able to connect to your socket server on por
 ## Game Maker Client
 
 1 ) Open the project in Game Maker.
+
 2 ) If you are running from a local server, head to "macros.gml" and set "is_prod" to false. This will cause other macros to point towards the development socket server on port 5000.
+
 3 ) Run the project, and run the game as the current level of development dictates. 
