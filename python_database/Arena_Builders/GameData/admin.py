@@ -6,6 +6,5 @@ class GameDataAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Slot, GameDataAdmin)
-admin.site.register(Effect, GameDataAdmin)
 admin.site.register(Skill, GameDataAdmin)
 admin.site.register(Item, GameDataAdmin)
