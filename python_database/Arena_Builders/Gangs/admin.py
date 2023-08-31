@@ -1,3 +1,8 @@
 from django.contrib import admin
+from Gangs.models import *
 
-# Register your models here.
+class GangAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Gang, GangAdmin)

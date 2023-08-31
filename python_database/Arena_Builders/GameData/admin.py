@@ -1,3 +1,11 @@
 from django.contrib import admin
+from GameData.models import *
 
-# Register your models here.
+class GameDataAdmin(admin.ModelAdmin):
+    pass
+
+
+admin.site.register(Slot, GameDataAdmin)
+admin.site.register(Effect, GameDataAdmin)
+admin.site.register(Skill, GameDataAdmin)
+admin.site.register(Item, GameDataAdmin)
