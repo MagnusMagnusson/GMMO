@@ -1,3 +1,3 @@
-function DungeonWall() : DungeonEntity() constructor {
+function DungeonWall(_cell) : DungeonEntity(_cell) constructor {
 
 }

@@ -1,5 +1,9 @@
-function DungeonCreature(_data, _cell) : DungeonEntity() constructor {
-    current_cell = _cell;
+function DungeonActor(_data, _cell) : DungeonEntity(_cell) constructor {
+    if (is_undefined(_cell))
+        return;
+    
+    var _this = self;
+    instance = instance_create_layer(0, 0, "Instances", obj_DungeonActor, { actor_struct: _this });
     
     name = OwnBinding.create(_data.name);
     
