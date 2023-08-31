@@ -3,7 +3,7 @@
 /// @arg {Any} initial      The initial value of the binding.
 function OwnBinding(_initial) : ValueBinding(false) constructor {
     /// @ignore
-    current_value = _initial;
+    current_value = binding_resolve(_initial);
     
     /// @func create(initial)
     /// @desc Creates a standalone binding that stores its own value.
