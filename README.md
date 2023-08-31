@@ -1,5 +1,5 @@
-# The Unnamed Game Maker MMO
-## But I propose 'noun arena online', for maximum early 2000 mmo cliche points. 
+# Arena Builders Online
+## The worlds tiniest Game Maker MMO
 
 This is a repository for a multiplayer game maker game to be entered into the 50th GMC jam, to be developed from 31st of August to 4th of September.
 
