@@ -20,20 +20,8 @@ export class Game {
         this.addBindings(p);
         p.scene = this.defaultScene;
         this.defaultScene.players.push(p);
-        p.send("you", {
-            id: p.id,
-            x : p.x,
-            y: p.y,
-            scene : this.defaultScene.name,
-        });
-        p.send("scene-state", {
-            ...p.scene.getState()
-        });
-        p.scene.broadcast('player-connected', {
-            id : p.id,
-            name : p.name,
-            x: p.x,
-            y : p.y,
+        p.emit("connected", {
+            success:true
         });
         this.allPlayers.push(p);
         return p;
