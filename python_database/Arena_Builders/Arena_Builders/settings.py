@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-5&jvu1l+gr&d9p9%aben*o2dxlx2^%#^7_19q#ob&w@pe0&4z_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["db.arenabuildersonline.com"]
+ALLOWED_HOSTS = ["db.arenabuildersonline.com", "localhost"]
 
 
 # Application definition
@@ -48,7 +48,6 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
