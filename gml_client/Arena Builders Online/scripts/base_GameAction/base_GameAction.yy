@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Actions",
-    "path": "folders/Dungeon/Actions.yy",
+    "path": "folders/Dungeon/Flow/Actions.yy",
   },
 }
