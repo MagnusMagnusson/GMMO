@@ -14,3 +14,7 @@ if(login){
 	username = login.username;
 	password = login.password;
 }
+
+if(!global.connected){
+	room_goto(rm_village);
+}
