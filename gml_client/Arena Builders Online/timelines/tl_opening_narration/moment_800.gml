@@ -1,0 +1,1 @@
+o_billboard.target_alpha = 0;
