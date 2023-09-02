@@ -3,10 +3,6 @@ from django.db import models
 
 
 
-class Restriction(models.Model):
-    key = models.CharField(max_length=20)
-    value = models.CharField(max_length=20)
-
 class Slot(models.Model):
     name = models.CharField(max_length = 20)
     def __str__(self):
@@ -33,11 +29,12 @@ class Item(models.Model):
     cost = models.IntegerField()
     skills = models.ManyToManyField(Skill)
     consumable = models.BooleanField(default = False)
+    
+    def __str__(self):
+        return self.name + ("("+self.slot+")" if self.slot else "")
 
+        
 class Restriction(models.Model):
     key = models.CharField(max_length=20)
     value = models.CharField(max_length=20)
     item = models.ForeignKey(Item, on_delete=models.CASCADE)
-    
-    def __str__(self):
-        return self.name + ("("+self.slot+")" if self.slot else "")

@@ -18,6 +18,19 @@ class Entity(models.Model):
     def __str__(self):
         return self.name
 
+    def serialize(self):
+        return {
+            "name" : self.name,
+            "vitality": self.vitality,
+            "stamina": self.stamina,
+            "brawn" : self.brawn,
+            "dexterity" : self.dexterity,
+            "harmony" : self.harmony,
+            "level": self.level,
+            "items": [item.id for item in self.items.all()],
+            "skills": [skill.id for skill in self.skills.all()]
+        }
+
 # Create your models here.
 class Character(Entity):
     account = models.ForeignKey(auth.User, on_delete=models.CASCADE)
@@ -25,3 +38,8 @@ class Character(Entity):
 
     def __str__(self):
         return self.name + " @ " +self.gang + " (" +self.account + ") "
+
+    def serialize(self):
+        old = super().serialize()
+        old["gang"] = self.gang.name
+        return old

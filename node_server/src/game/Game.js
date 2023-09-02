@@ -54,14 +54,31 @@ export class Game {
             } else {
                 Database.Login(username, password).then(({success, character, reason}) => {
                     if(!success){
-                        socket.emit('login-result', { success, reason});
+                        socket.emit('login-result', {success : false, reason : reason ||"unknown error"});
                     } else {
                         player.isLoggedIn = true;
                         player.character = character;
-                        socket.emit({success, character});
+                        socket.emit('login-result', {success, character});
                     }
-                })
+                });
             }
+        });
+
+        socket.on('create-account', ({username, password, character}) => {
+            Database.NewUser(username, password, character).then(({success, character, reason}) => {
+                if(success){
+                    socket.emit('login-result', {
+                        success : true,
+                        character
+                    });
+                } else {
+                    socket.emit('login-result', {
+                        success : false,
+                        reason: reason
+                    });
+                }
+
+            });
         });
         //Add on-connection bindings here
     }

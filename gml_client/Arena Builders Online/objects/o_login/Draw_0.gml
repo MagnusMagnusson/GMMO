@@ -29,5 +29,9 @@ draw_text(xOrigin, yOrigin + 4 * string_height("A"), string_repeat("*", string_l
 draw_text(xOrigin, yOrigin + 6 * string_height("A"), "Login");
 draw_text(xOrigin, yOrigin + 8 * string_height("A"), "Create new account");
 
+draw_set_color(c_red);
+draw_text(xOrigin, yOrigin + 10 * string_height("A"), error);
+
 
 draw_set_halign(fa_left);
+draw_set_color(c_black);

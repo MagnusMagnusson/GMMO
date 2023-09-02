@@ -12,7 +12,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Loading",
-    "path": "folders/Loading.yy",
+    "path": "folders/Main Menu/Loading.yy",
   },
   "parentObjectId": null,
   "persistent": false,

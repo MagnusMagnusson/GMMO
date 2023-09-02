@@ -1,6 +1,6 @@
 if waiting exit;
 
-if(mouse_check_button_pressed(mb_left)){
+if(!alarm[1] && mouse_check_button_pressed(mb_left)){
 	selected = 0;
 	if(mouse_x >= xOrigin - box_width/2 && mouse_x <= xOrigin + box_width/2){
 		if(mouse_y >= yOrigin + 1*string_height("A") && mouse_y <= yOrigin + 2*string_height("A")){
@@ -22,8 +22,7 @@ if(mouse_check_button_pressed(mb_left)){
 			}
 		} 
 		if(mouse_y >= yOrigin + 8*string_height("A") && mouse_y <= yOrigin + 9*string_height("A")){
-			selected = 2;
-			keyboard_string = password;
+			room_goto(rm_create_account);
 		} 
 	}
 }

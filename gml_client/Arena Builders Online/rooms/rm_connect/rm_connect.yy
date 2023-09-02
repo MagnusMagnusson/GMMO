@@ -18,7 +18,7 @@
   ],
   "parent": {
     "name": "Loading",
-    "path": "folders/Loading.yy",
+    "path": "folders/Main Menu/Loading.yy",
   },
   "parentRoom": null,
   "physicsSettings": {

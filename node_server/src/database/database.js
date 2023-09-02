@@ -9,13 +9,35 @@ const DATABASE_ADDRESS = DATABASE_DOMAIN + DATABASE_PORT;
 export const Login = async (username, password) => {
     return fetch(DATABASE_ADDRESS+"/api/auth/login", {
         method: "POST",
-        body: {
+        body: JSON.stringify({
             username,
             password
+        })
+    }).then((data) => {
+        if(data.status < 400){
+            return data.json();
+        } else {
+            return {
+                success : false,
+                reason : "Unknown error"
+            }
         }
-    })
+    });
+}
+
+export const NewUser = async (username, password, character) => {
+    return fetch(DATABASE_ADDRESS+"/api/auth/create", {
+        method: "POST",
+        body: JSON.stringify({
+            username,
+            password,
+            character
+        })
+    }).then((data) => {
+        return data.json();
+    });
 }
 
 export default {
-    Login,
+    Login, NewUser
 }

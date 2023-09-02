@@ -18,7 +18,7 @@
   ],
   "parent": {
     "name": "Login",
-    "path": "folders/Login.yy",
+    "path": "folders/Main Menu/Login.yy",
   },
   "parentRoom": null,
   "physicsSettings": {
