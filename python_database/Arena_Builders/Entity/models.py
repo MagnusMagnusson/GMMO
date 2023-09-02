@@ -12,8 +12,8 @@ class Entity(models.Model):
     dexterity = models.IntegerField()
     harmony = models.IntegerField()
     level = models.IntegerField()
-    items = models.ManyToManyField(gamedata.Item)
-    skills = models.ManyToManyField(gamedata.Skill)
+    items = models.ManyToManyField(gamedata.Item, blank=True, null=True)
+    skills = models.ManyToManyField(gamedata.Skill, blank=True, null=True)
 
     def __str__(self):
         return self.name
@@ -37,7 +37,7 @@ class Character(Entity):
     gang = models.ForeignKey(gangs.Gang, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.name + " @ " +self.gang + " (" +self.account + ") "
+        return self.name + " @ " + self.gang.name
 
     def serialize(self):
         old = super().serialize()
