@@ -42,7 +42,18 @@ function bindServerLoginEvents(){
 	});
 
 	global.io.on("gamedata", function(data){
-		//The server has sent over game data - there current types of game data are "items", and "skills". 
+		//The server has sent over game data - there are three datatypes: Items, skills, and entities (aka, enemies)
+		switch(data.dataType){
+			case "items" : {
+				break;
+			}
+			case "skills" : {
+				break;
+			}
+			case "entity" : {
+				break;
+			}
+		}
 	});
 
 }

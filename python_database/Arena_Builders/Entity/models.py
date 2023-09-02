@@ -1,3 +1,4 @@
+from pyexpat import model
 from django.db import models
 from django.contrib.auth import models as auth
 from Gangs import models as gangs
@@ -12,7 +13,6 @@ class Entity(models.Model):
     dexterity = models.IntegerField()
     harmony = models.IntegerField()
     level = models.IntegerField()
-    items = models.ManyToManyField(gamedata.Item, blank=True, null=True)
     skills = models.ManyToManyField(gamedata.Skill, blank=True, null=True)
 
     def __str__(self):
@@ -20,6 +20,7 @@ class Entity(models.Model):
 
     def serialize(self):
         return {
+            "id": self.id,
             "name" : self.name,
             "vitality": self.vitality,
             "stamina": self.stamina,
@@ -27,7 +28,7 @@ class Entity(models.Model):
             "dexterity" : self.dexterity,
             "harmony" : self.harmony,
             "level": self.level,
-            "items": [item.id for item in self.items.all()],
+            "items": [inventoryItem.serialize() for inventoryItem in self.inventory_set.all()],
             "skills": [skill.id for skill in self.skills.all()]
         }
 
@@ -43,3 +44,16 @@ class Character(Entity):
         old = super().serialize()
         old["gang"] = self.gang.name
         return old
+
+class Inventory(models.Model):
+    character = models.ForeignKey(Character, on_delete=models.CASCADE)
+    item = models.ForeignKey(gamedata.Item, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default = 1)
+    equipped= models.IntegerField(default = 0)
+
+    def serialize(self):
+        return {
+            "item" : self.item.id,
+            "quantity" : self.quantity,
+            "equipped" : self.equipped
+        }
