@@ -2,7 +2,7 @@ import {Server} from 'socket.io';
 import express from 'express';
 import http from 'http';
 import { Game } from '../game/Game.js';
-import config from '../game/config.json' assert { type: 'json' };;
+import database from '../database/database.js';
 
 const started = new Date();
 
@@ -23,6 +23,7 @@ export class GameServer {
                         <b>Arena Builders Online, Socket server</b>
                         <p>There are currently ${this.allConnections.length} active connections</p>
                         <p>Server has been active since ${started.toISOString()}</p>
+                        <p>Using prod database : ${database.USE_PROD}</p>
                     </body>
                 </html>
             `);
