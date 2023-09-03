@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "struct_FieldOfSight",
+  "name": "struct_FieldOfMovement",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

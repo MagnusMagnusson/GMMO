@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Grid",
-    "path": "folders/Dungeon/Grid.yy",
+    "name": "Fields",
+    "path": "folders/Dungeon/Grid/Fields.yy",
   },
 }

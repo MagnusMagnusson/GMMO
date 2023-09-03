@@ -1,4 +1,4 @@
-function GameAction(_actor, _turnid) constructor {
+function GameAction(_actor, _turnid, _costs) constructor {
     if (is_undefined(_actor))
         return;
     
@@ -6,8 +6,20 @@ function GameAction(_actor, _turnid) constructor {
     
     actor = _actor;
     turn_id = _turnid;
+    costs = _costs;
     
     is_completed = false;
+    
+    static can_perform = function() {
+        if (!_actor.can_spend_action(costs[$ "action"] ?? 0))
+            return false;
+        
+        if (!_actor.can_spend_mana(costs[$ "mana"] ?? 0))
+            return false;
+        
+        if (!_actor.can_spend_health(costs[$ "health"] ?? 0))
+            return false;
+    }
     
     static predict = function() {
         throw $"{instanceof(self)}.predict() is not implemented.";
@@ -50,4 +62,4 @@ function GameAction(_actor, _turnid) constructor {
 }
 
 // creating the statics
-var _dummy = new GameAction(undefined, 0);
+var _dummy = new GameAction(undefined, 0, undefined);

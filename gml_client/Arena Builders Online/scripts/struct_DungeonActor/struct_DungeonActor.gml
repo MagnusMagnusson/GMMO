@@ -33,6 +33,10 @@ function DungeonActor(_data, _cell) : DungeonEntity(_cell) constructor {
         return health_current.get_value();
     }
     
+    static can_spend_health = function(_amount) {
+        return health_current.get_value() >= 1 + _amount;
+    }
+    
     static lose_health = function(_amount) {
         var _new_health = max(health_current.get_value() - _amount, 0);
         health_current.set_value(_new_health);
@@ -50,7 +54,7 @@ function DungeonActor(_data, _cell) : DungeonEntity(_cell) constructor {
     }
     
     static can_spend_action = function(_amount) {
-        return acion_current.get_value() >= _amount;
+        return action_current.get_value() >= _amount;
     }
     
     static spend_action = function(_amount) {
@@ -82,6 +86,26 @@ function DungeonActor(_data, _cell) : DungeonEntity(_cell) constructor {
         var _new_mana = min(mana_current.get_value() + _amount, mana_max.get_value());
         mana_current.set_value(_new_mana);
     }
+    
+    #endregion
+    
+    #region Advanced status
+    
+    // regen
+    health_regen = OwnBinding.create(0);
+    action_regen = OwnBinding.create(2);
+    mana_regen = OwnBinding.create(0);
+    
+    // vision
+    vision_range = OwnBinding.create(6);
+    detection_range = OwnBinding.create(0);
+    seethrough_range = OwnBinding.create(0);
+    
+    // mobility
+    run_range = OwnBinding.create(2);
+    is_floating = OwnBinding.create(false);
+    step_cost = OwnBinding.create(1);
+    run_cost = OwnBinding.create(2);
     
     #endregion
     

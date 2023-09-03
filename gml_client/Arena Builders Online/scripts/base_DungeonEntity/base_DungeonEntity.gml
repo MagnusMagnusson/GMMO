@@ -11,6 +11,8 @@ function DungeonEntity(_cell) constructor {
     ctrl_DungeonEntities.register_entity(self);
     
     instance = noone;
+    is_static = false;
+    fills_cell = false;
     
     static move_to = function(_cx, _cy) {
         var _grid = current_cell.grid;

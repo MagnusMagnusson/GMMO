@@ -1,3 +1,5 @@
+visible = false;
+
 ongoing_animation = undefined;
 
 begin_animation = function(_animation) {

@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "struct_FieldOfSight",
+  "name": "struct_DungeonEquipment",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Fields",
-    "path": "folders/Dungeon/Grid/Fields.yy",
+    "name": "Equipment",
+    "path": "folders/Dungeon/Actors/Equipment.yy",
   },
 }

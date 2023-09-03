@@ -11,7 +11,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "Control",
-    "path": "folders/Dungeon/View/Control.yy",
+    "path": "folders/Dungeon/Flow/Control.yy",
   },
   "parentObjectId": null,
   "persistent": false,

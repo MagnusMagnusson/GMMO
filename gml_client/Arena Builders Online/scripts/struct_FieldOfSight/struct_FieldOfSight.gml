@@ -5,6 +5,7 @@ function FieldOfSight(_grid, _xfrom, _yfrom, _range, _cellmap) constructor {
     grid = _grid;
     xfrom = _xfrom;
     yfrom = _yfrom;
+    cellfrom = grid.get_at(xfrom, yfrom);
     range = _range;
     cellmap = _cellmap;
     

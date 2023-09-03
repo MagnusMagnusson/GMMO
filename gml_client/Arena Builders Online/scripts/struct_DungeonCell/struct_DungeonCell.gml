@@ -19,4 +19,8 @@ function DungeonCell(_grid, _x, _y) constructor {
     static predict_entity = function(_entity) {
         predicted_entity = _entity;
     }
+    
+    static distance_from = function(_cell) {
+        return abs(x - _cell.x) + abs(y - _cell.y);
+    }
 }

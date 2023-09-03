@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "struct_FieldOfSight",
+  "name": "struct_MoveAbility",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Fields",
-    "path": "folders/Dungeon/Grid/Fields.yy",
+    "name": "Abilities",
+    "path": "folders/Dungeon/Actors/Abilities.yy",
   },
 }

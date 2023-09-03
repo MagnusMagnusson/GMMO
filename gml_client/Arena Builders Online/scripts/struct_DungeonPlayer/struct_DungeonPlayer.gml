@@ -8,6 +8,12 @@ function DungeonPlayer(_data, _cell) : DungeonActor(_data, _cell) constructor {
     static create_at = function(_data, _x, _y) {
         var _player = new DungeonPlayer(_data, ctrl_DungeonGameplay.grid.get_at(_x, _y));
     }
+    
+    #region Equipment
+    
+    
+    
+    #endregion
 }
 
 // initialising the statics
