@@ -19,7 +19,6 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from Arena_Builders.auth import login,create
-from GameData import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,4 +26,5 @@ urlpatterns = [
     path('api/auth/create', create),
     path('api/gamedata/', include('GameData.urls')),
     path('api/entity/', include('Entity.urls')),
+    path('api/dungeon/', include('Dungeon.urls')),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,4 +1,4 @@
-function SkillData(data) constructor{
+function EntityData(data) constructor{
 	id = data.id; //integer
 	name = data.name; //string
 	description = data.description; //string

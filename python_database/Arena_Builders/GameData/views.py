@@ -10,3 +10,12 @@ def ItemView(request):
             "results": [item.serialize() for item in objects]
         }
     )
+
+def SkillView(request):
+    objects = Skill.objects.all()
+    return JsonResponse(
+        {
+            "length" : objects.count(),
+            "results": [skill.serialize() for skill in objects]
+        }
+    )

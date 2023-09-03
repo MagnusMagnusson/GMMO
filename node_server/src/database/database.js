@@ -39,6 +39,57 @@ export const NewUser = async (username, password, character) => {
     });
 }
 
+export const Gamedata = {
+    Items : async (socket) => {
+        return fetch(DATABASE_ADDRESS+"/api/gamedata/items", {
+            method: "GET",
+        }).then((_d) => {
+            _d.json(),then(data => {
+                socket.emit('gamedata',{
+                    type:'items',
+                    data:data.results
+                })
+            });
+        });
+    },    
+    Skills : async (socket) => {
+        return fetch(DATABASE_ADDRESS+"/api/gamedata/skills", {
+            method: "GET",
+        }).then((_d) => {
+            _d.json(),then(data => {
+                socket.emit('gamedata',{
+                    type:'skills',
+                    data:data.results
+                })
+            });
+        });
+    },
+    Entities : async (socket) => {
+        return fetch(DATABASE_ADDRESS+"/api/entity/entities", {
+            method: "GET",
+        }).then((_d) => {
+            _d.json(),then(data => {
+                socket.emit('gamedata',{
+                    type:'entities',
+                    data:data.results
+                })
+            });
+        });
+    },
+    Dungeons : async (socket) => {
+        return fetch(DATABASE_ADDRESS+"/api/dungeon/dungeons", {
+            method: "GET",
+        }).then((_d) => {
+            _d.json(),then(data => {
+                socket.emit('gamedata',{
+                    type:'dungeons',
+                    data:data.results
+                })
+            });
+        });
+    },
+}
+
 export default {
-    Login, NewUser, USE_PROD
+    Login, NewUser, USE_PROD, Gamedata
 }
