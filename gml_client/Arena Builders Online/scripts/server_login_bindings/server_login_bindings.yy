@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Server_Bindings",
-    "path": "folders/Server_Bindings.yy",
+    "path": "folders/Socket Manager/Server_Bindings.yy",
   },
 }

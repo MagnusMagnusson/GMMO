@@ -19,8 +19,6 @@ export class Game {
     addPlayer(socket){
         const p = new Player("Unknown Player", 100, 100, socket);
         this.addBindings(p);
-        p.scene = this.defaultScene;
-        this.defaultScene.players.push(p);
         p.emit("connected", {
             success:true
         });
@@ -62,7 +60,12 @@ export class Game {
                     } else {
                         player.isLoggedIn = true;
                         player.character = character;
-                        socket.emit('login-result', {success, character});
+                        player.name = character.name;
+                        socket.emit('login-result', {success,
+                            character: {
+                                ...character,
+                                id: player.id
+                        }});
                         this.defaultScene.addPlayer(player);
                     }
                 });
@@ -74,8 +77,15 @@ export class Game {
                 if(success){
                     socket.emit('login-result', {
                         success : true,
-                        character
+                        character: {
+                            ...character,
+                            id: player.id
+                        }
                     });
+                    player.character = character;
+                    this.defaultScene.addPlayer(player);
+                    player.name = character.name;
+                    player.isLoggedIn = true;
                 } else {
                     socket.emit('login-result', {
                         success : false,
@@ -91,7 +101,8 @@ export class Game {
                 console.log("exists");
                 player.scene.broadcast("chat", {
                     player : player.character.name,
-                    message : message
+                    message : message,
+                    gang: player.character.gang,
                 })
             }
         });

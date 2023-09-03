@@ -24,7 +24,7 @@ function MoveAnimation(_instance, _xoffset, _yoffset) : EntityAnimation(_instanc
         var _current_yoffset = yoffset * _factor * ctrl_DungeonView.cell_height;
         
         with (instance) {
-            draw_sprite(sprite_index, image_index, x + _current_xoffset, y + _current_yoffset);
+            draw_sprite_ext(sprite_index, image_index, x + _current_xoffset, y + _current_yoffset, ctrl_DungeonView.cell_width / DUNGEON_CELL_SIZE, ctrl_DungeonView.cell_height / DUNGEON_CELL_SIZE, image_angle, image_blend, image_alpha);
         }
     }
 }

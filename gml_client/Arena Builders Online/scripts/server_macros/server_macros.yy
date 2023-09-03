@@ -5,7 +5,7 @@
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Loading",
-    "path": "folders/Main Menu/Loading.yy",
+    "name": "Socket Manager",
+    "path": "folders/Socket Manager.yy",
   },
 }

@@ -1,4 +1,7 @@
 function PlayerTurn(_actors, _id) : GameplayTurn(_actors, _id) constructor {
+	if(array_length(struct_get_names(remaining_actors)) == 0){
+		return;
+	}
     var _player_id = struct_get_names(remaining_actors)[0];
     player_entity = ctrl_DungeonEntities.resolve_entity(_player_id);
     

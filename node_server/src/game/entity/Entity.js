@@ -23,7 +23,15 @@ export class Entity {
 
     tick(delta){
     }
-
+    getFullState(){
+        return {
+            id: this.id,
+            name: this.id,
+            x : this.x,
+            y : this.y,
+            character: this.character
+        }
+    }
     getState(){
         return {
             id: this.id,

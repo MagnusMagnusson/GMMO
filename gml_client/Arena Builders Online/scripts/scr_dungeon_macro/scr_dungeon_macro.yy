@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "server_village_bindings",
+  "name": "scr_dungeon_macro",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Server_Bindings",
-    "path": "folders/Socket Manager/Server_Bindings.yy",
+    "name": "View",
+    "path": "folders/Dungeon/View.yy",
   },
 }

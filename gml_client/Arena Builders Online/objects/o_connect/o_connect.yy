@@ -11,8 +11,8 @@
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Loading",
-    "path": "folders/Main Menu/Loading.yy",
+    "name": "Socket Manager",
+    "path": "folders/Socket Manager.yy",
   },
   "parentObjectId": null,
   "persistent": false,
