@@ -1,0 +1,42 @@
+{
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "ui_DungeonParty",
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+  ],
+  "managed": true,
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_Gui","path":"objects/par_Gui/par_Gui.yy",},"propertyId":{"name":"width","path":"objects/par_Gui/par_Gui.yy",},"value":"180",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"par_Gui","path":"objects/par_Gui/par_Gui.yy",},"propertyId":{"name":"height","path":"objects/par_Gui/par_Gui.yy",},"value":"1080",},
+  ],
+  "parent": {
+    "name": "UI",
+    "path": "folders/Dungeon/UI.yy",
+  },
+  "parentObjectId": {
+    "name": "par_GuiContainer",
+    "path": "objects/par_GuiContainer/par_GuiContainer.yy",
+  },
+  "persistent": false,
+  "physicsAngularDamping": 0.1,
+  "physicsDensity": 0.5,
+  "physicsFriction": 0.2,
+  "physicsGroup": 1,
+  "physicsKinematic": false,
+  "physicsLinearDamping": 0.1,
+  "physicsObject": false,
+  "physicsRestitution": 0.1,
+  "physicsSensor": false,
+  "physicsShape": 1,
+  "physicsShapePoints": [],
+  "physicsStartAwake": true,
+  "properties": [],
+  "solid": false,
+  "spriteId": {
+    "name": "bg_DungeonUi",
+    "path": "sprites/bg_DungeonUi/bg_DungeonUi.yy",
+  },
+  "spriteMaskId": null,
+  "visible": true,
+}
