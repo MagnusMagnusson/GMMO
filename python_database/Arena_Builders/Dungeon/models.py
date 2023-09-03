@@ -14,7 +14,7 @@ class Dungeon(models.Model):
             "id":self.id,
             "name" :self.name,
             "description" : self.description,
-            "rooms" : [room.serialize() for room in self.room_set.objects.all()],
+            "rooms" : [room.serialize() for room in self.room_set.all()],
 
         }
 
@@ -25,14 +25,14 @@ class Room(models.Model):
     height = models.IntegerField(default = 30)
 
     def __str__(self):
-        return self.dungeon.name + " - " + self.rank
+        return self.dungeon.name + " - " + str(self.rank)
     
     def serialize(self):
         return {
             "rank" : self.rank,
             "width" : self.width,
             "height" : self.height,
-            "enemies" : [enemy.serialize() for enemy in self.enemy_set.objects.all()]
+            "enemies" : [enemy.serialize() for enemy in self.enemy_set.all()]
         }
 
 class Enemy(models.Model):

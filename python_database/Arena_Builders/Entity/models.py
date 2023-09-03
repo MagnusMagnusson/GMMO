@@ -13,6 +13,7 @@ class Entity(models.Model):
     dexterity = models.IntegerField()
     harmony = models.IntegerField()
     level = models.IntegerField()
+    is_human = models.BooleanField(default = False)
     skills = models.ManyToManyField(gamedata.Skill, blank=True, null=True)
 
     def __str__(self):
@@ -28,8 +29,8 @@ class Entity(models.Model):
             "dexterity" : self.dexterity,
             "harmony" : self.harmony,
             "level": self.level,
-            "items": [inventoryItem.serialize() for inventoryItem in self.inventory_set.all()],
-            "skills": [skill.id for skill in self.skills.all()]
+            "skills": [skill.id for skill in self.skills.all()],
+            "items": [],
         }
 
 # Create your models here.
@@ -37,12 +38,20 @@ class Character(Entity):
     account = models.ForeignKey(auth.User, on_delete=models.CASCADE)
     gang = models.ForeignKey(gangs.Gang, on_delete=models.CASCADE)
 
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        self.is_human = True
+        super().save(*args, **kwargs) 
+
     def __str__(self):
         return self.name + " @ " + self.gang.name
 
     def serialize(self):
         old = super().serialize()
         old["gang"] = self.gang.name
+        old["items"] = [inventoryItem.serialize() for inventoryItem in self.inventory_set.all()],
         return old
 
 class Inventory(models.Model):

@@ -24,7 +24,7 @@ export class Entity {
     tick(delta){
     }
 
-    state(){
+    getState(){
         return {
             id: this.id,
             name: this.id,

@@ -3,7 +3,12 @@ function bindServerLoginEvents(){
 	global.io.on("connected", function(){
 		//The server has responded to our connection, socket communication is established. 
 		global.connected = true;
-		room_goto_next();
+		with(o_connect){
+			stage++;
+			if(stage >= 5){
+				room_goto(rm_login);
+			}
+		}
 		alarm[0] = -1;
 	});
 
@@ -17,7 +22,6 @@ function bindServerLoginEvents(){
 					password: password
 				});
 				global.player = data.character;
-				room_goto(rm_Dungeon);
 			} else {
 				error = data.reason;
 				waiting = false;
@@ -58,19 +62,26 @@ function bindServerLoginEvents(){
 				struct = EntityData;
 				break;
 			}
-			case "dungeon" : {
+			case "dungeons" : {
 				struct = DungeonData;
 				break;
 			}
 			default : {
-				show_debug_message("Unknown gamdatatype " + dataType);
+				show_debug_message("Unknown game data type " + dataType);
 				return;
 			}
 		}
 		
 		for(var i = 0; i < array_length(data.data); i++){
 			var obj = data.data[i];
-			global.GameData[dataType][obj.id] = new struct(obj);
+			global.GameData[$ dataType][$ obj.id] = new struct(obj);
+		}		
+		
+		with(o_connect){
+			stage++;
+			if(stage >= 5){
+				room_goto(rm_login);
+			}
 		}
 	});
 }

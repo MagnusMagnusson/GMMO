@@ -39,55 +39,24 @@ export const NewUser = async (username, password, character) => {
     });
 }
 
+const loadGameData = (url, type) => async (socket) => {
+    return fetch(DATABASE_ADDRESS+url, {
+        method: "GET",
+    }).then((_d) => {
+        _d.json().then(data => {
+            socket.emit('gamedata',{
+                type:type,
+                data:data.results
+            })
+        });
+    });
+}
+
 export const Gamedata = {
-    Items : async (socket) => {
-        return fetch(DATABASE_ADDRESS+"/api/gamedata/items", {
-            method: "GET",
-        }).then((_d) => {
-            _d.json(),then(data => {
-                socket.emit('gamedata',{
-                    type:'items',
-                    data:data.results
-                })
-            });
-        });
-    },    
-    Skills : async (socket) => {
-        return fetch(DATABASE_ADDRESS+"/api/gamedata/skills", {
-            method: "GET",
-        }).then((_d) => {
-            _d.json(),then(data => {
-                socket.emit('gamedata',{
-                    type:'skills',
-                    data:data.results
-                })
-            });
-        });
-    },
-    Entities : async (socket) => {
-        return fetch(DATABASE_ADDRESS+"/api/entity/entities", {
-            method: "GET",
-        }).then((_d) => {
-            _d.json(),then(data => {
-                socket.emit('gamedata',{
-                    type:'entities',
-                    data:data.results
-                })
-            });
-        });
-    },
-    Dungeons : async (socket) => {
-        return fetch(DATABASE_ADDRESS+"/api/dungeon/dungeons", {
-            method: "GET",
-        }).then((_d) => {
-            _d.json(),then(data => {
-                socket.emit('gamedata',{
-                    type:'dungeons',
-                    data:data.results
-                })
-            });
-        });
-    },
+    Items :  loadGameData("/api/gamedata/items","items"),    
+    Skills : loadGameData("/api/gamedata/skills","skills"),   
+    Entities : loadGameData("/api/entity/entities","entities"),   
+    Dungeons : loadGameData("/api/dungeon/dungeons","dungeons"),
 }
 
 export default {

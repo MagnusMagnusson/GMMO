@@ -24,8 +24,7 @@ class Skill(models.Model):
             "description" : self.description,
             "range" : self.range,
             "passive" : self.passive,
-            "skills" : [skill.id for skill in self.skills],
-            "effects" : [[effect.key, effect.value] for effect in self.effect_set.objects.all()]
+            "effects" : [[effect.key, effect.value] for effect in self.effect_set.all()]
         }
 
 class Effect(models.Model):
@@ -42,7 +41,7 @@ class Item(models.Model):
     consumable = models.BooleanField(default = False)
     
     def __str__(self):
-        return self.name + ("("+self.slot+")" if self.slot else "")
+        return self.name + (" ("+ str(self.slot)+")" if self.slot else "")
 
     def serialize(self):
         return {
@@ -51,9 +50,9 @@ class Item(models.Model):
             "description" : self.description,
             "slot" : self.slot.name,
             "cost" : self.cost,
-            "skills" : [skill.id for skill in self.skills],
+            "skills" : [skill.id for skill in self.skills.all()],
             "consumable" : self.consumable,
-            "restrictions" : [[restriction.key, restriction.value] for restriction in self.restriction_set.objects.all()]
+            "restrictions" : [[restriction.key, restriction.value] for restriction in self.restriction_set.all()]
         }
         
 class Restriction(models.Model):

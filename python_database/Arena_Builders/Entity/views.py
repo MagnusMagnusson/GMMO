@@ -4,7 +4,7 @@ from django.http import JsonResponse
 
 # Create your views here.
 def EntityView(request):
-    objects = Entity.objects.all()
+    objects = Entity.objects.filter(is_human = False)
     return JsonResponse(
         {
             "length" : objects.count(),

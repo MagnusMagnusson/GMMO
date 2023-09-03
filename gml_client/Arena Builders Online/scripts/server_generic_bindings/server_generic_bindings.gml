@@ -10,12 +10,23 @@ function bindServerGenericEvents(){
 	});
 	
 	global.io.on("change-scene", function(data){
-		//The server is telling you to move to a new scene, f.i from the village to a dungeon.
-		throw "not implemented"
+		switch(data.scene){
+			case "dungeon" : {
+				room_goto(rm_Dungeon);
+				break;
+			}
+			
+			case "village" :
+			default : {
+				room_goto(rm_village);
+				break;
+			}
+		}
 	});	
 	
-	global.io.on("chat-message", function(data){
-		//Someone in our scene is using the in-game chat function. 
-		throw "not implemented"
+	global.io.on("chat", function(data){
+		with(o_chat){
+			ds_list_add(log, [data.player, data.message]);
+		}
 	});
 }

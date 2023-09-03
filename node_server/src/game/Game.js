@@ -10,7 +10,7 @@ export class Game {
     lastTick = 0;
 
     constructor(){
-        this.defaultScene = new Scene({name : "Default", players : []});
+        this.defaultScene = new Scene({name : "Default", type : "village", players : []});
         this.defaultScene.permanent = true;
 
         this.scenes.push(this.defaultScene);
@@ -63,6 +63,7 @@ export class Game {
                         player.isLoggedIn = true;
                         player.character = character;
                         socket.emit('login-result', {success, character});
+                        this.defaultScene.addPlayer(player);
                     }
                 });
             }
@@ -83,6 +84,16 @@ export class Game {
                 }
 
             });
+        });
+
+        socket.on('chat', ({message}) => {
+            if(player && player.scene){
+                console.log("exists");
+                player.scene.broadcast("chat", {
+                    player : player.character.name,
+                    message : message
+                })
+            }
         });
         //Add on-connection bindings here
     }
