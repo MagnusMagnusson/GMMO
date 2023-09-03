@@ -22,5 +22,7 @@ array_foreach(ongoing_actions, function(_action) { _action.process(); });
 var _remaining_count = array_filter_ext(ongoing_actions, function(_action) { return !_action.is_completed });
 array_resize(ongoing_actions, _remaining_count);
 
-if (!current_turn.has_pending_actors() && array_length(ongoing_actions) == 0)
+if (!current_turn.has_pending_actors() && array_length(ongoing_actions) == 0) {
     current_turn = current_turn.make_next_turn();
+    current_turn.init();
+}

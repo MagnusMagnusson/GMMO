@@ -3,6 +3,10 @@ function GameplayTurn(_actors, _id) constructor {
     
     remaining_actors = struct_map(_actors, function() { return false; });
     
+    static init = function() {
+        // do nothing
+    }
+    
     static process = function() {
         throw $"{instanceof(self)}.process() is not implemented.";
     }

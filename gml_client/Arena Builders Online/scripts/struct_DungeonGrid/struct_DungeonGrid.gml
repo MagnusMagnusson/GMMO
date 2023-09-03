@@ -12,4 +12,8 @@ function DungeonGrid(_width, _height) constructor {
         
         return cells[_y * width + _x];
     }
+    
+    static create_cellmap = function(_predicate) {
+        return array_map(cells, _predicate);
+    }
 }

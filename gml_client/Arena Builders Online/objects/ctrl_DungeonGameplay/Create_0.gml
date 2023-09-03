@@ -33,8 +33,8 @@ DungeonEnemy.create_at({
     name: "ddd", vitality: 1, harmony: 1, dexterity: 1, brawn: 1, stamina: 1,
 }, 8, 6);
 
-instance_create_layer(0, 0, "Instances", ctrl_DungeonFlow);
-
 instance_create_layer(0, 0, "Instances", ctrl_DungeonView);
+
+instance_create_layer(0, 0, "Instances", ctrl_DungeonFlow);
 
 instance_create_layer(0, 0, "Instances", ui_DungeonParty);

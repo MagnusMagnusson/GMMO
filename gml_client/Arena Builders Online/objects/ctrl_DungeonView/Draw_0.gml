@@ -10,3 +10,6 @@ for (var j = _ystart; j < _yend; j++) {
     var _cell = grid.get_at(i, j);
     _cell.terrain.draw(left_x + cell_width * i, top_y + cell_height * j);
 }
+with (obj_CellCommand) {
+    event_perform(ev_draw, ev_draw_normal);
+}

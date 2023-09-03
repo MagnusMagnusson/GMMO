@@ -4,6 +4,7 @@ ongoing_actions = [];
 
 current_turn = new PlayerTurn(ctrl_DungeonEntities.all_players, 1);
 predicted_turn = new PlayerTurn(ctrl_DungeonEntities.all_players, 1);
+current_turn.init();
 
 request_action = function(_action) {
     current_turn.mark_requested(_action.actor);

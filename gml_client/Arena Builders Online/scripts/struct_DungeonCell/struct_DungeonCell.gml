@@ -2,6 +2,7 @@ function DungeonCell(_grid, _x, _y) constructor {
     grid = _grid;
     x = _x;
     y = _y;
+    cell_id = $"x{x}y{y}";
     
     terrain = new DungeonFloor();
     entity = undefined;
