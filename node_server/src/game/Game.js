@@ -1,6 +1,7 @@
 import { Player } from "./entity/Player.js";
 import { Scene } from "./scene/Scene.js";
 import Database from '../database/database.js';
+import database from "../database/database.js";
 
 export class Game {
     scenes = [];
@@ -23,6 +24,10 @@ export class Game {
         p.emit("connected", {
             success:true
         });
+        database.Gamedata.Items(socket);
+        database.Gamedata.Entities(socket);
+        database.Gamedata.Dungeons(socket);
+        database.Gamedata.Skills(socket);
         this.allPlayers.push(p);
         return p;
     }
@@ -44,7 +49,6 @@ export class Game {
 
     addBindings(player){
         const socket = player.socket;
-
         socket.on('login', ({username, password}) => {
             if(player.isLoggedIn){
                 socket.emit('login-result', {

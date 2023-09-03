@@ -1,12 +1,17 @@
-function GameAction(_actor) constructor {
+function GameAction(_actor, _turnid) constructor {
     if (is_undefined(_actor))
         return;
     
     is_standalone = true;
     
     actor = _actor;
+    turn_id = _turnid;
     
     is_completed = false;
+    
+    static predict = function() {
+        throw $"{instanceof(self)}.predict() is not implemented.";
+    }
     
     static init = function() {
         throw $"{instanceof(self)}.init() is not implemented.";
@@ -31,7 +36,8 @@ function GameAction(_actor) constructor {
     
     static deserialize = function(_action) {
         static type_mappings = {
-            move: MoveAction
+            move: MoveAction,
+            skip: SkipAction,
         };
         
         var _ctor = type_mappings[$ _action.type];
@@ -44,4 +50,4 @@ function GameAction(_actor) constructor {
 }
 
 // creating the statics
-var _dummy = new GameAction(undefined);
+var _dummy = new GameAction(undefined, 0);

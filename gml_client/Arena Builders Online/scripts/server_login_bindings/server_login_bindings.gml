@@ -42,7 +42,35 @@ function bindServerLoginEvents(){
 	});
 
 	global.io.on("gamedata", function(data){
-		//The server has sent over game data - there current types of game data are "items", and "skills". 
+		//The server has sent over game data - there are four datatypes: Dungeons, Items, skills, and entities (aka, enemies)
+		var dataType = data.type;
+		var struct;
+		switch(dataType){
+			case "items": {
+				struct = ItemData;
+				break;
+			}
+			case "skills": {
+				struct = SkillData;
+				break;
+			}
+			case "entities":{
+				struct = EntityData;
+				break;
+			}
+			case "dungeon" : {
+				struct = DungeonData;
+				break;
+			}
+			default : {
+				show_debug_message("Unknown gamdatatype " + dataType);
+				return;
+			}
+		}
+		
+		for(var i = 0; i < array_length(data.data); i++){
+			var obj = data.data[i];
+			global.GameData[dataType][obj.id] = new struct(obj);
+		}
 	});
-
 }

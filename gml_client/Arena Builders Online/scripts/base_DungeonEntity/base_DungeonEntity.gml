@@ -3,7 +3,9 @@ function DungeonEntity(_cell) constructor {
         return;
     
     current_cell = _cell;
+    predicted_cell = _cell;
     current_cell.entity = self;
+    current_cell.predicted_entity = self;
     
     key = "";
     ctrl_DungeonEntities.register_entity(self);
@@ -19,6 +21,18 @@ function DungeonEntity(_cell) constructor {
         current_cell.entity = undefined;
         current_cell = _target_cell;
         _target_cell.entity = self;
+    }
+    
+    static predict_move_to = function(_cx, _cy) {
+        var _grid = current_cell.grid;
+        var _target_cell = _grid.get_at(_cx, _cy);
+        if (!is_undefined(_target_cell.predicted_entity))
+            return false; // the action won't work
+        
+        current_cell.predicted_entity = undefined;
+        predicted_cell = _target_cell;
+        _target_cell.predicted_entity = self;
+        return true;
     }
     
     static swap_with = function(_cx, _cy) {

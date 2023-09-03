@@ -25,6 +25,8 @@ function DungeonActor(_data, _cell) : DungeonEntity(_cell) constructor {
     mana_max = OwnBinding.create(_mana_max);
     mana_current = OwnBinding.create(_mana_max);
     
+    #region Basic status
+    
     // Health-related methods
     
     static get_health = function() {
@@ -80,4 +82,36 @@ function DungeonActor(_data, _cell) : DungeonEntity(_cell) constructor {
         var _new_mana = min(mana_current.get_value() + _amount, mana_max.get_value());
         mana_current.set_value(_new_mana);
     }
+    
+    #endregion
+    
+    #region Movement
+    
+    static can_move_towards = function(_xoffset, _yoffset) {
+        var _target_cell = current_cell.get_towards(_xoffset, _yoffset);
+        if (is_undefined(_target_cell))
+            return false;
+        
+        return _target_cell.is_walkable_by(self);
+    }
+    
+    static can_move_str = function(_path) {
+        var _dir = string_char_at(_path, 1);
+        switch (_dir) {
+            case "X":
+                return true;
+            case "R":
+                return can_move_towards(1, 0);
+            case "U":
+                return can_move_towards(0, -1);
+            case "L":
+                return can_move_towards(-1, 0);
+            case "D":
+                return can_move_towards(0, 1);
+            default:
+                throw $"Unknown direction letter '{_dir}'.";
+        }
+    }
+    
+    #endregion
 }

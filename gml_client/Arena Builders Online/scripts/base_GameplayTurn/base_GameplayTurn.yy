@@ -6,6 +6,6 @@
   "isDnD": false,
   "parent": {
     "name": "Turns",
-    "path": "folders/Dungeon/Turns.yy",
+    "path": "folders/Dungeon/Flow/Turns.yy",
   },
 }

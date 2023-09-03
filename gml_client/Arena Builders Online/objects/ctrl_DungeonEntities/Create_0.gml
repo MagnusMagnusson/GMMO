@@ -10,7 +10,10 @@ register_entity = function(_entity) {
     var _id = "e" + string(next_id++);
     _entity.key = _id;
     all_entities[$ _id] = _entity;
-    
+}
+
+register_actor = function(_entity) {
+    var _id = _entity.key;
     if (is_instanceof(_entity, DungeonPlayer))
         all_players[$ _id] = _entity;
     
@@ -41,4 +44,10 @@ unregister_entity = function(_entity) {
     
     if (is_instanceof(_entity, DungeonEnemy))
         struct_remove(all_enemies, _entity.key);
+}
+
+has_actors = function() {
+    return struct_names_count(all_players) > 0
+        || struct_names_count(all_allies) > 0
+        || struct_names_count(all_enemies) > 0;
 }
